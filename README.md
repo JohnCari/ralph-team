@@ -1,4 +1,4 @@
-# ralphteam
+# RalphTeam
 
 A custom slash command for [Claude Code](https://claude.com/claude-code) that creates **Agent Teams** for collaborative task execution — designed to work inside the [ralph-loop](https://github.com/ghuntley/how-to-ralph-wiggum) plugin.
 
