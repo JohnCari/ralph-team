@@ -1,12 +1,12 @@
-# ralphteam
+# ralph-team
 
 A custom slash command for [Claude Code](https://claude.com/claude-code) that creates **Agent Teams** for collaborative task execution — designed to work inside the [ralph-loop](https://github.com/ghuntley/how-to-ralph-wiggum) plugin.
 
-Instead of a single Claude session handling everything (and burning through context), `/ralphteam` spawns a coordinated team of agents, each with their own context window, working in parallel on different parts of your task.
+Instead of a single Claude session handling everything (and burning through context), `/ralph-team` spawns a coordinated team of agents, each with their own context window, working in parallel on different parts of your task.
 
 ## How It Works
 
-When you invoke `/ralphteam "Your task description"`, Claude acts as a **team lead** and:
+When you invoke `/ralph-team "Your task description"`, Claude acts as a **team lead** and:
 
 1. **Analyzes the task** to determine how many teammates are needed (2-5)
 2. **Partitions files** so no two teammates touch the same file
@@ -19,15 +19,15 @@ When you invoke `/ralphteam "Your task description"`, Claude acts as a **team le
 
 ## Installation
 
-1. Copy `ralphteam.md` into your project's custom commands directory:
+1. Copy `ralph-team.md` into your project's custom commands directory:
 
    ```bash
    # Project-level (available in one project)
-   cp ralphteam.md /path/to/your/project/.claude/commands/ralphteam.md
+   cp ralph-team.md /path/to/your/project/.claude/commands/ralph-team.md
 
    # Or global (available in all projects)
    mkdir -p ~/.claude/commands
-   cp ralphteam.md ~/.claude/commands/ralphteam.md
+   cp ralph-team.md ~/.claude/commands/ralph-team.md
    ```
 
 2. Enable Agent Teams in your Claude Code settings (`~/.claude/settings.json` or project-level `.claude/settings.json`):
@@ -45,13 +45,13 @@ When you invoke `/ralphteam "Your task description"`, Claude acts as a **team le
 ### Standalone
 
 ```
-/ralphteam "Build a REST API with authentication and tests"
+/ralph-team "Build a REST API with authentication and tests"
 ```
 
 ### With ralph-loop (recommended)
 
 ```
-/ralph-loop "/ralphteam Build a REST API with auth and tests" --max-iterations 10 --completion-promise "DONE"
+/ralph-loop "/ralph-team Build a REST API with auth and tests" --max-iterations 10 --completion-promise "DONE"
 ```
 
 This combines the ralph-loop's iterative persistence with agent teams' parallel collaboration — each iteration spawns a fresh team that picks up where the last one left off via the shared task list and git history.
@@ -81,7 +81,7 @@ The team lead dynamically selects teammates based on task complexity:
 
 ## How It Integrates with Ralph-Loop
 
-The ralph-loop feeds the same prompt to Claude each iteration. `/ralphteam` handles this by:
+The ralph-loop feeds the same prompt to Claude each iteration. `/ralph-team` handles this by:
 
 - **Iteration 1**: Full team creation — analyze task, create task list, spawn teammates, begin work
 - **Iteration 2+**: Continuation — check TaskList for progress, respawn departed teammates, resume uncompleted tasks, create additional tasks if gaps are found
